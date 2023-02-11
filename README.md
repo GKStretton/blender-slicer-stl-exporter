@@ -3,20 +3,31 @@
 > Export selected objects in Blender to Cura or your chosen slicer in a single click
 
 This is a simple addon that supports easy export of objects to your chosen slicer.
-
-Once enabled, the addon is found under the "Misc" section of the right-hand side
 viewport menu (toggled with 'n').
 
+Tested in Blender 3.4.1
+
+## Installation
+
+1. At the top of this page, click "Code" > "Download ZIP"
+2. In Blender, go to Edit > Preferences > Add-ons > Install
+3. Select the ZIP from step 1
+4. Ensure it is checked / enabled
+
 ## Usage
+
+Once enabled, the addon is found under the "Misc" section of the right-hand side. Settings:
 
 - export_path: the location where stls get exported. You don't need to interact with this usually because they automatically get opened in the slicer. e.g. /tmp/stls
 - slicer_executable: the command to run to open the slicer. e.g. cura
 
-This supports exporting multiple objects at once. They will be individually exported as stls and then opened by the slicer. The slicer command is formed like so for 2 objects Cube and Cylinder (auto-exported with .stl suffix):
+This supports exporting multiple objects at once (just select multiple in the viewport). They will be individually exported as stls and then opened by the slicer. The slicer command is formed like so for 2 objects Cube and Cylinder (auto-exported with .stl suffix):
 
 ```bash
 [slicer_executable] [export_path]/Cube.stl [export_path]/Cylinder.stl
 ```
+
+The above is what runs when you click "Export".
 
 Tested with Cura, not tested with any other slicers.
 

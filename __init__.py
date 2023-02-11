@@ -9,7 +9,7 @@ bl_info = {
     "description": "Export selected object(s) as stls and open in slicer in a single click.",
     "author": "Greg Stretton",
     "version": (1, 0),
-    "doc_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/"
+    "doc_url": "https://github.com/GKStretton/blender-slicer-stl-exporter"
 }
 
 PROPS = [
