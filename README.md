@@ -1,5 +1,7 @@
 # Blender Slicer STL Exporter
 
+> Export selected objects in Blender to Cura or your chosen slicer in a single click
+
 This is a simple addon that supports easy export of objects to your chosen slicer.
 
 Once enabled, the addon is found under the "Misc" section of the right-hand side
