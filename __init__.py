@@ -25,6 +25,11 @@ PROPS = [
 		default='cura',
 		maxlen=15
 	)),
+	('single_stl', bpy.props.BoolProperty(
+		name='Single STL',
+		description='If checked, multiple objects will be exported as a single stl',
+		default=False,
+	)),
 ]
 
 class ExportPanel(bpy.types.Panel):
@@ -56,21 +61,31 @@ class ExportOperator(bpy.types.Operator):
 		path = Path(scene.export_path)
 		path.mkdir(parents=True, exist_ok=True)
 		e = scene.slicer_executable
-
-		obs = [o for o in context.selected_objects if o.type == 'MESH']
-		bpy.ops.object.select_all(action='DESELECT')    
-
 		slicerCommand = [e]
 
-		for ob in obs:
-			viewlayer.objects.active = ob
-			ob.select_set(True)
+		if scene.single_stl:
+			ob = context.active_object
 			stl_path = path / f"{ob.name}.stl"
 			slicerCommand.append(str(stl_path))
 			bpy.ops.export_mesh.stl(
 					filepath=str(stl_path),
 					use_selection=True)
-			ob.select_set(False)
+		else:
+			obs = [o for o in context.selected_objects if o.type == 'MESH']
+			bpy.ops.object.select_all(action='DESELECT')    
+
+			for ob in obs:
+				viewlayer.objects.active = ob
+				ob.select_set(True)
+				stl_path = path / f"{ob.name}.stl"
+				slicerCommand.append(str(stl_path))
+				bpy.ops.export_mesh.stl(
+						filepath=str(stl_path),
+						use_selection=True)
+				ob.select_set(False)
+			
+			for ob in obs:
+				ob.select_set(True)
 
 		print(slicerCommand)
 		subprocess.Popen(slicerCommand)
