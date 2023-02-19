@@ -20,6 +20,7 @@ Once enabled, the addon is found under the "Misc" section of the right-hand side
 
 - export_path: the location where stls get exported. You don't need to interact with this usually because they automatically get opened in the slicer. e.g. /tmp/stls
 - slicer_executable: the command to run to open the slicer. e.g. cura
+- single_stl: can be checked to export multiple objects as a single stl so they end up joined in the slicer
 
 This supports exporting multiple objects at once (just select multiple in the viewport). They will be individually exported as stls and then opened by the slicer. The slicer command is formed like so for 2 objects Cube and Cylinder (auto-exported with .stl suffix):
 

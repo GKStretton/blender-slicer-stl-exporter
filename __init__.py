@@ -8,7 +8,7 @@ bl_info = {
 	'category': 'Object',
     "description": "Export selected object(s) as stls and open in slicer in a single click.",
     "author": "Greg Stretton",
-    "version": (1, 0),
+    "version": (2, 0),
     "doc_url": "https://github.com/GKStretton/blender-slicer-stl-exporter"
 }
 
